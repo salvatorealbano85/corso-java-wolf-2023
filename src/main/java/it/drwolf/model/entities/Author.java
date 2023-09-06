@@ -1,5 +1,6 @@
 package it.drwolf.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -15,6 +16,7 @@ public class Author extends PanacheEntity {
 
 	@OneToMany(mappedBy = "author")
 	@OrderBy("publication")
+	@JsonIgnore
 	private Set<Book> books = new HashSet<>();
 
 	public Set<Book> getBooks() {
