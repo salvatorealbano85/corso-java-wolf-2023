@@ -2,6 +2,7 @@ package it.drwolf.resources;
 
 import it.drwolf.model.dtos.BookDTO;
 import it.drwolf.model.entities.Book;
+import it.drwolf.repositories.AuthorRepository;
 import it.drwolf.repositories.BookRepository;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -17,6 +18,9 @@ public class BookResource {
 	@Inject
 	BookRepository bookRepository;
 
+	@Inject
+	AuthorRepository authorRepository;
+
 
 	@GET
 	public List<Book> all(){
@@ -26,6 +30,7 @@ public class BookResource {
 	@POST
 	@Transactional
 	public Book add(Book book){
+		authorRepository.persist(book.getAuthor());
 		bookRepository.persist(book);
 		return book;
 	}

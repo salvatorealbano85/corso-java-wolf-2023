@@ -12,7 +12,8 @@ public class Book extends PanacheEntity {
 
 	private String title;
 	private Date publication;
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false,cascade = CascadeType.MERGE)
+
 	private Author author;
 	public String getTitle() {
 		return title;
