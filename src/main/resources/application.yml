@@ -13,9 +13,6 @@ quarkus:
     username: ${db.username}
     password: ${db.password}
     jdbc:
-      min-size: 0
-      initial-size: 1
-      max-size: 5
       url: jdbc:mysql://${db.server}:${db.port}/${db.name}
   hibernate-orm:
     database:
